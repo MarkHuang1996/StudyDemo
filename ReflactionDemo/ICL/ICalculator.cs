@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace simpleFactoryDemo
+namespace ICL
 {
-    class Program
+    public interface ICalculator
     {
-        static void Main(string[] args)
-        {
-        }
+        int Add(int a, int b);
+        int Sub(int a, int b);
+
     }
 }
