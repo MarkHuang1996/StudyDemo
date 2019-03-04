@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using simlpeFactoryDemo.Report;
+using System.Reflection;
 
 namespace simlpeFactoryDemo.Factory
 {
@@ -23,19 +24,26 @@ namespace simlpeFactoryDemo.Factory
 
         //4 choose report type
 
+        //public static IReport ChooseReportType()
+        //{
+        //    switch (reportType)
+        //    {
+        //        case "ExcelReport":
+        //            objReport = new ExcelReport();
+        //            break;
+        //        case "WordReport":
+        //            objReport = new WordReport();
+        //            break;
+
+        //    }
+        //    return objReport;
+        //}
+
+        //reflaction method
+
         public static IReport ChooseReportType()
         {
-            switch (reportType)
-            {
-                case "ExcelReport":
-                    objReport = new ExcelReport();
-                    break;
-                case "WordReport":
-                    objReport = new WordReport();
-                    break;
-             
-            }
-            return objReport;
+            return (IReport)Assembly.Load("simlpeFactoryDemo").CreateInstance("simlpeFactoryDemo.Report." + reportType);
         }
 
     }
