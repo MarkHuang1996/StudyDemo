@@ -60,4 +60,46 @@ namespace genericity
         }
 
     }
+
+    #region kw: default
+
+    class MyGenericClass1<T1, T2>
+    {
+        private T1 obj1;
+
+        private MyGenericClass1()
+        {
+            //kw default
+            obj1 = default(T1);//if t1 is reference type  
+        }
+    }
+    #endregion
+
+
+    #region genericity with limit
+    class MyGenericClass2<T1, T2, T3>
+        where T1:struct//T1 must be the value type
+        where T2:class//T2  must be the refe type
+        where T3: new()//T3 must be have less one constraucter without no prame
+    {
+        //Product  list
+        public List<T2> ProductList { get; set; }
+        //Publisher
+        public T3 Publisher { get; set; }
+        public MyGenericClass2()
+        {
+            ProductList = new List<T2>();
+            Publisher = new T3();
+        }
+
+
+        public T2 Buy(T1 num)
+        {
+            dynamic a = num;
+
+            return ProductList[a];
+        }
+    }
+
+    #endregion
 }
