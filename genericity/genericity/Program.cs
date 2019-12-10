@@ -46,7 +46,13 @@ namespace genericity
 
         static void Main(string[] args)
         {
+            //Test for  limited genercity class
+            //[1] instance of class 
+            MyGenericClass3<int, Course, Teacher> myClass = new MyGenericClass3<int, Course, Teacher>();
 
+            myClass.Teacher = new Teacher() { TeacherName = "Ken", ClassCount = 2 };
+
+            myClass.Course = new Course() { Name = ".net", Period = 25 };
         }
     }
 }

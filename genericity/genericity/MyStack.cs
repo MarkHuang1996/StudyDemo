@@ -102,4 +102,29 @@ namespace genericity
     }
 
     #endregion
+
+    class Course
+    {
+        public string Name { get; set; }
+        public int Period { get; set; }
+    }
+
+    class Teacher
+    {
+        public string TeacherName { get; set; }
+
+        public int ClassCount { get; set; }
+    }
+
+    class MyGenericClass3<T1, T2, T3>
+        where T1:struct
+        where T2:Course
+        where T3:Teacher
+    {
+        public T1 num { get; set; }
+
+        public T2 Course { get; set; }
+        public T3 Teacher { get; set; }
+
+    }
 }
